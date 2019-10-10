@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 a_vPosition;
+uniform vec2 u_vcenter;
+
+void
+main()
+{
+    //gl_Position = a_vPosition;
+    gl_Position = vec4(a_vPosition.x + u_vcenter.x, a_vPosition.y + u_vcenter.y, 0.0, 1.0);
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec4 u_Color;
+
+void
+main()
+{
+    gl_FragColor = u_Color;
+}
+</script>
+
+<script type="text/javascript" src="./Common/webgl-utils.js"></script>
+<script type="text/javascript" src="./Common/initShaders.js"></script>
+<script type="text/javascript" src="./Common/MV.js"></script>
+<script type="text/javascript" src="pingpong.js"></script>
+</head>
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<div>
+  <button id="IncreaseButton">Ball Speed +</button>
+  <button id="DecreaseButton">Ball Speed -</button>
+  <button id="LeftButton">Move Left</button>
+  <button id="RightButton">Move Right</button>
+  
+  <p>
+  Bounce Count:
+  </p>
+  <p id="ct">
+
+  </p>
+</div>
+
+</body>
+</html>
